@@ -49,6 +49,7 @@
 #include "Lawn/Widget/CheatDialog.h"
 #include "Lawn/Widget/GameSelector.h"
 #include "Lawn/Widget/ZombatarWidget.h"
+#include "Lawn/Widget/ZombatarTOSDialog.h"
 #include "Lawn/Widget/CreditScreen.h"
 #include "Sexy.TodLib/EffectSystem.h"
 #include "Sexy.TodLib/FilterEffect.h"
@@ -569,14 +570,7 @@ void LawnApp::KillGameSelector()
 
 void LawnApp::ShowZombatarTOS()
 {
-	LawnDialog* aDialog = new LawnDialog(
-		this,
-		Dialogs::DIALOG_ZOMBATAR_TOS,
-		true,
-		"[ZOMBATAR_TOS_HEADER]",
-		"[ZOMBATAR_TOS]",
-		"",
-		Dialog::BUTTONS_OK_CANCEL);
+	ZombatarTOSDialog* aDialog = new ZombatarTOSDialog(this);
 	AddDialog(Dialogs::DIALOG_ZOMBATAR_TOS, aDialog);
 }
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PvZ Portable — Web</title>
+<title>PvZ Portable — 网页版</title>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -149,7 +149,6 @@ canvas#canvas {
 }
 #save-toolbar button:hover { background: rgba(78,204,163,0.2); }
 #save-toolbar button:disabled { opacity: 0.4; cursor: default; }
-
 @media (max-height: 760px), (max-width: 640px) {
     body.upload-mode { justify-content: flex-start; }
     #upload-screen { padding: 1.25em 1em 2em; justify-content: flex-start; }
@@ -160,66 +159,60 @@ canvas#canvas {
 </head>
 <body class="upload-mode">
 <div id="upload-screen">
-    <h1><a href="https://github.com/wszqkzqk/PvZ-Portable" target="_blank" rel="noopener noreferrer">PvZ Portable | Play Anywhere</a></h1>
+    <h1><a href="https://github.com/wszqkzqk/PvZ-Portable" target="_blank" rel="noopener noreferrer">PvZ Portable | 随处畅玩</a></h1>
     <p id="project-links">
-        <a href="https://github.com/wszqkzqk/PvZ-Portable" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/wszqkzqk/PvZ-Portable/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-        <a href="https://github.com/wszqkzqk/PvZ-Portable/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+        <a href="https://github.com/wszqkzqk/PvZ-Portable" target="_blank" rel="noopener noreferrer">项目主页</a>
+        <a href="https://github.com/wszqkzqk/PvZ-Portable/issues" target="_blank" rel="noopener noreferrer">反馈问题</a>
+        <a href="https://github.com/wszqkzqk/PvZ-Portable/releases" target="_blank" rel="noopener noreferrer">发布版本</a>
     </p>
-    <p>Community-driven re-implementation for <strong>all desktop, mobile, and web</strong>. Play instantly in your browser with no installation. <strong>No game resources are included.</strong></p>
-    <p>To use this engine, you <strong>MUST</strong> legally purchase the original game on <a href="https://store.steampowered.com/app/3590/Plants_vs_Zombies_GOTY_Edition/" target="_blank" style="color:#4ecca3;text-decoration:underline;">Steam</a> or <a href="https://www.ea.com/games/plants-vs-zombies/plants-vs-zombies" target="_blank" style="color:#4ecca3;text-decoration:underline;">EA's official website</a>.<br>
-    Please provide your own <code>main.pak</code> and <code>properties/</code> folder from your legally purchased copy of Plants&nbsp;vs.&nbsp;Zombies GOTY Edition.</p>
-    <p style="font-size: 0.85em; color: #888; font-style: italic; line-height: 1.4; max-width: 600px; margin: 0 auto 1.5em auto;">Disclaimer: This strictly educational project is a community-driven engine re-implementation. It is not affiliated with, authorized, or endorsed by PopCap Games or Electronic Arts.</p>
-
+    <p>社区驱动的跨平台重制引擎，支持<strong>全桌面、移动设备与网页</strong>。无需安装，在浏览器中直接运行。<strong>本项目不含任何游戏资源。</strong></p>
+    <p>使用本引擎，你<strong>必须</strong>在 <a href="https://store.steampowered.com/app/3590/Plants_vs_Zombies_GOTY_Edition/" target="_blank" style="color:#4ecca3;text-decoration:underline;">Steam</a> 或 <a href="https://www.ea.com/games/plants-vs-zombies/plants-vs-zombies" target="_blank" style="color:#4ecca3;text-decoration:underline;">EA官网</a> 合法购买原版游戏。<br>
+    请使用你正版《植物大战僵尸 年度版》中的 <code>main.pak</code> 文件与 <code>properties/</code> 文件夹。</p>
+    <p style="font-size: 0.85em; color: #888; font-style: italic; line-height: 1.4; max-width: 600px; margin: 0 auto 1.5em auto;">声明：本项目为纯教育用途的社区引擎重制，与宝开游戏、艺电无任何关联，未获其授权、认证或支持。</p>
     <div id="drop-zone">
-        <p id="drop-zone-title">📂 Drop resources here — import and play instantly!</p>
-        <p id="drop-zone-subtitle">Drop a ZIP or folder containing <code>main.pak</code> &amp; <code>properties/</code>, or pick one below:</p>
+        <p id="drop-zone-title">📂 拖入资源文件 —— 导入即玩！</p>
+        <p id="drop-zone-subtitle">拖入包含 <code>main.pak</code> 与 <code>properties/</code> 的压缩包或文件夹，或选择下方按钮：</p>
         <div id="resource-split-actions">
             <button id="browse-zip-btn" class="resource-action" type="button">
-                <strong>Import Resource ZIP</strong>
-                <span>Select a ZIP package that contains <code>main.pak</code> and <code>properties/</code>.</span>
+                <strong>导入资源压缩包</strong>
+                <span>选择包含 <code>main.pak</code> 和 <code>properties/</code> 的 ZIP 压缩包。</span>
             </button>
             <button id="browse-folder-btn" class="resource-action" type="button">
-                <strong>Select Resource Folder</strong>
-                <span>Select a folder that directly contains <code>main.pak</code> and <code>properties/</code>.</span>
+                <strong>选择资源文件夹</strong>
+                <span>选择直接包含 <code>main.pak</code> 和 <code>properties/</code> 的文件夹。</span>
             </button>
         </div>
-        <p id="drop-zone-ready-title">▶ Start Game</p>
-        <p id="drop-zone-ready-subtitle">Resources loaded successfully. Click here to launch!</p>
+        <p id="drop-zone-ready-title">▶ 开始游戏</p>
+        <p id="drop-zone-ready-subtitle">资源加载成功，点击此处启动！</p>
         <div id="file-list"></div>
-        <p id="drop-zone-reselect"><a id="reselect-link">Re-select resources</a></p>
+        <p id="drop-zone-reselect"><a id="reselect-link">重新选择资源</a></p>
         <div id="loading-drop-zone"></div>
         <input type="file" id="file-input" multiple webkitdirectory>
         <input type="file" id="resource-zip-input" accept=".zip,application/zip,application/x-zip-compressed" style="display:none">
     </div>
     <div id="upload-save-actions">
-        <button id="upload-save-import-btn" title="Import saves from ZIP before starting">Import Save ZIP</button>
-        <button id="upload-save-import-dir-btn" title="Import saves from a folder before starting">Import Save Folder</button>
-        <button id="upload-save-clear-btn" title="Delete all saved data stored in this browser">Clear Browser Saves</button>
+        <button id="upload-save-import-btn" title="启动前从压缩包导入存档">导入存档压缩包</button>
+        <button id="upload-save-import-dir-btn" title="启动前从文件夹导入存档">导入存档文件夹</button>
+        <button id="upload-save-clear-btn" title="删除浏览器中保存的所有数据">清空浏览器存档</button>
     </div>
     <input type="file" id="upload-save-import-input" accept=".zip" style="display:none">
     <input type="file" id="upload-save-import-dir-input" multiple webkitdirectory style="display:none">
-
-    <p class="note">Your files stay in your browser and are never uploaded to any server.<br>Resources can be loaded from a ZIP package or a resource folder. Saves are stored locally in your browser via IndexedDB and can be imported from ZIP or folder.</p>
-    <p class="note">Starting the game indicates that you have read the notices above and acknowledge the no-warranty terms of the LGPL v3.0-or-later license for this code.</p>
-    <p class="note">Copyright (C) 2026 Zhou Qiankang &lt;<a href="mailto:wszqkzqk@qq.com" style="color:#4ecca3;text-decoration:underline;">wszqkzqk@qq.com</a>&gt;</p>
+    <p class="note">你的文件仅在本地浏览器处理，绝不会上传到任何服务器。<br>资源可从压缩包或文件夹加载，存档通过 IndexedDB 保存在本地，支持从压缩包或文件夹导入导出。</p>
+    <p class="note">开始游戏即表示你已阅读以上提示，并知晓本代码基于 LGPL v3.0 或更高版本协议，无任何担保。</p>
+    <p class="note">版权所有 (C) 2026 Zhou Qiankang &lt;<a href="mailto:wszqkzqk@qq.com" style="color:#4ecca3;text-decoration:underline;">wszqkzqk@qq.com</a>&gt;</p>
 </div>
-
 <div id="canvas-container">
     <div id="save-toolbar">
-        <button id="save-export-btn" title="Export saves as ZIP">💾 Export Saves</button>
+        <button id="save-export-btn" title="导出存档为压缩包">💾 导出存档</button>
     </div>
     <canvas id="canvas" width="800" height="600" tabindex="0"></canvas>
 </div>
-<textarea id="pvz-soft-keyboard" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done"></textarea>
-
-<!-- Module must be defined BEFORE the Emscripten glue script -->
+<textarea id="pvz-soft-keyboard" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="完成"></textarea>
 <script>
 window.moduleReadyPromise = new Promise(function(resolve, reject) {
     window._resolveModuleReady = resolve;
     window._rejectModuleReady = reject;
 });
-
 var Module = {
     canvas: document.getElementById('canvas'),
     noInitialRun: true,
@@ -232,7 +225,6 @@ var Module = {
     print: function(text) { console.log(text); },
     printErr: function(text) { console.warn(text); }
 };
-
 Module.canvas.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
@@ -240,7 +232,6 @@ Module.canvas.addEventListener('contextmenu', function(e) {
 {{{ SCRIPT }}}
 <script>
 'use strict';
-
 const collectedFiles = new Map();
 let hasPak = false;
 let hasProperties = false;
@@ -251,10 +242,8 @@ let saveSyncInFlight = null;
 let saveSyncQueued = false;
 let lastSaveSyncAt = 0;
 let saveFsReadyPromise = null;
-
 const SAVE_SYNC_INTERVAL_MS = 5000;
 const SAVE_CLOSE_WARNING_MS = 7000;
-
 const dropZone    = document.getElementById('drop-zone');
 const fileInput   = document.getElementById('file-input');
 const browseFolderBtn = document.getElementById('browse-folder-btn');
@@ -268,9 +257,7 @@ const uploadSaveClearBtn = document.getElementById('upload-save-clear-btn');
 const uploadSaveImportInput = document.getElementById('upload-save-import-input');
 const uploadSaveImportDirInput = document.getElementById('upload-save-import-dir-input');
 const reselectLink = document.getElementById('reselect-link');
-
 let runtimeReloadScheduled = false;
-
 dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragover'); });
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
 dropZone.addEventListener('drop', async e => {
@@ -303,7 +290,6 @@ resourceZipInput.addEventListener('change', async () => {
     resourceZipInput.value = '';
     refreshUI();
 });
-
 function normalizeResourcePath(path) {
     const cleanPath = path.replace(/\\/g, '/').replace(/^\/+/, '');
     const parts = cleanPath.split('/').filter(Boolean);
@@ -312,18 +298,15 @@ function normalizeResourcePath(path) {
     if (parts.length > 1) return parts.slice(1).join('/');
     return parts[0];
 }
-
 function normalizeSaveImportPath(path) {
     const cleanPath = path.replace(/\\/g, '/').replace(/^\/+/, '');
     const parts = cleanPath.split('/').filter(Boolean);
     if (parts.length === 0) return '';
-
     const userdataIndex = parts.indexOf('userdata');
     if (userdataIndex >= 0) return parts.slice(userdataIndex + 1).join('/');
     if (parts.length > 1) return parts.slice(1).join('/');
     return parts[0];
 }
-
 async function traverseEntry(entry, basePath) {
     if (entry.isFile) {
         const file = await new Promise(r => entry.file(r));
@@ -341,7 +324,6 @@ async function traverseEntry(entry, basePath) {
         } while (batch.length > 0);
     }
 }
-
 function handleFileList(files) {
     for (const f of files) {
         const path = normalizeResourcePath(f.webkitRelativePath || f.name);
@@ -349,15 +331,13 @@ function handleFileList(files) {
         collectedFiles.set(path, f);
     }
 }
-
 async function importResourceZip(file, btn) {
     btn.disabled = true;
     const oldHTML = btn.innerHTML;
-    btn.textContent = '⏳ Importing ZIP…';
+    btn.textContent = '⏳ 正在导入 ZIP…';
     try {
         const zip = await JSZip.loadAsync(file);
         const entries = Object.keys(zip.files).filter(name => !zip.files[name].dir);
-
         for (const name of entries) {
             const destPath = normalizeResourcePath(name);
             if (!destPath) continue;
@@ -365,24 +345,21 @@ async function importResourceZip(file, btn) {
             collectedFiles.set(destPath, new File([data], destPath.split('/').pop()));
         }
     } catch (e) {
-        console.error('Resource ZIP import failed:', e);
-        alert('Resource ZIP import failed: ' + e.message);
+        console.error('资源压缩包导入失败:', e);
+        alert('资源压缩包导入失败: ' + e.message);
     } finally {
         btn.disabled = false;
         btn.innerHTML = oldHTML;
     }
 }
-
 function refreshUI() {
     hasPak = collectedFiles.has('main.pak');
     hasProperties = false;
     for (const key of collectedFiles.keys()) {
         if (key.startsWith('properties/')) { hasProperties = true; break; }
     }
-
     const allReady = hasPak && hasProperties;
     const hasAny = collectedFiles.size > 0;
-
     fileListDiv.innerHTML = '';
     if (hasAny) {
         const show = (label, ok) => {
@@ -395,20 +372,17 @@ function refreshUI() {
         show('properties/', hasProperties);
     }
     fileListDiv.classList.toggle('has-items', hasAny);
-
     dropZone.classList.toggle('ready', allReady);
     if (allReady) {
         dropZone.setAttribute('tabindex', '0');
         dropZone.setAttribute('role', 'button');
-        dropZone.setAttribute('aria-label', 'Start Game');
+        dropZone.setAttribute('aria-label', '开始游戏');
     } else {
         dropZone.removeAttribute('tabindex');
         dropZone.removeAttribute('role');
         dropZone.removeAttribute('aria-label');
     }
 }
-
-// Click or keyboard activate the drop zone when ready → start game
 function handleDropZoneActivate(e) {
     if (!dropZone.classList.contains('ready')) return;
     if (e.target.closest('#drop-zone-reselect') || e.target.closest('#file-list')) return;
@@ -418,8 +392,6 @@ dropZone.addEventListener('click', handleDropZoneActivate);
 dropZone.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleDropZoneActivate(e); }
 });
-
-// Re-select link reverts to upload mode
 reselectLink.addEventListener('click', e => {
     e.stopPropagation();
     collectedFiles.clear();
@@ -427,58 +399,45 @@ reselectLink.addEventListener('click', e => {
     resourceZipInput.value = '';
     refreshUI();
 });
-
 function resizeCanvas() {
     var canvas = document.getElementById('canvas');
     var container = document.getElementById('canvas-container');
     var vw = container.clientWidth;
     var vh = container.clientHeight;
-    // Fit 4:3 aspect ratio inside the viewport
     var scale = Math.min(vw / canvas.width, vh / canvas.height);
     canvas.style.width  = Math.floor(canvas.width  * scale) + 'px';
     canvas.style.height = Math.floor(canvas.height * scale) + 'px';
 }
-
 window.addEventListener('fullscreenchange', resizeCanvas);
-
 function canSyncSaves() {
     return savesMounted && Module.FS && typeof Module.FS.syncfs === 'function';
 }
-
 async function ensureSaveFsReady() {
     if (saveFsReadyPromise) return saveFsReadyPromise;
-
     saveFsReadyPromise = (async () => {
         await window.moduleReadyPromise;
         try { Module.FS.mkdir('/saves'); } catch (e) {}
         try { Module.FS.mount(Module.FS.filesystems.IDBFS, {}, '/saves'); } catch (e) {}
         savesMounted = true;
-
         await new Promise(r => Module.FS.syncfs(true, err => {
-            if (err) console.warn('IDBFS initial sync error:', err);
+            if (err) console.warn('IDBFS 初始同步错误:', err);
             r();
         }));
-
         lastSaveSyncAt = Date.now();
     })();
-
     return saveFsReadyPromise;
 }
-
 async function syncSaves() {
     if (!canSyncSaves()) return;
-
     if (saveSyncInFlight) {
         saveSyncQueued = true;
         return saveSyncInFlight;
     }
-
     saveSyncInFlight = new Promise(resolve => Module.FS.syncfs(false, err => {
-        if (err) console.warn('IDBFS persist error:', err);
+        if (err) console.warn('IDBFS 持久化错误:', err);
         else lastSaveSyncAt = Date.now();
         resolve();
     }));
-
     try {
         await saveSyncInFlight;
     } finally {
@@ -489,14 +448,12 @@ async function syncSaves() {
         }
     }
 }
-
 function startSaveAutosync() {
     if (saveSyncIntervalId !== null) return;
     saveSyncIntervalId = window.setInterval(() => {
         void syncSaves();
     }, SAVE_SYNC_INTERVAL_MS);
 }
-
 async function startGame() {
     dropZone.classList.remove('ready');
     dropZone.classList.add('loading');
@@ -504,20 +461,17 @@ async function startGame() {
     loadStatus.style.display = 'block';
     loadStatus.classList.remove('has-error');
     try {
-        loadStatus.textContent = 'Preparing WebAssembly runtime…';
+        loadStatus.textContent = '正在初始化 WebAssembly 运行环境…';
         await window.moduleReadyPromise;
-
         const files = Array.from(collectedFiles.entries());
         let processedBytes = 0;
         const totalBytes = files.reduce((sum, [, file]) => sum + file.size, 0);
-
         for (let i = 0; i < files.length; i++) {
             const [path, file] = files[i];
-            loadStatus.textContent = 'Writing resources… '
+            loadStatus.textContent = '正在写入资源… '
                 + (i + 1) + '/' + files.length + ', '
                 + (processedBytes / 1048576).toFixed(1) + '/'
                 + (totalBytes / 1048576).toFixed(1) + ' MiB';
-
             const data = new Uint8Array(await file.arrayBuffer());
             const parts = path.split('/');
             let dir = '/';
@@ -527,29 +481,24 @@ async function startGame() {
             }
             Module.FS.writeFile('/' + path, data);
             processedBytes += file.size;
-
             if ((i + 1) % 4 === 0) await new Promise(r => setTimeout(r, 0));
         }
-
-        loadStatus.textContent = 'Restoring saved data…';
+        loadStatus.textContent = '正在恢复存档数据…';
         await ensureSaveFsReady();
-
         document.body.classList.remove('upload-mode');
         document.body.classList.add('game-mode');
         document.getElementById('upload-screen').style.display = 'none';
         document.getElementById('canvas-container').style.display = 'flex';
-
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
-
         loadStatus.style.display = 'none';
         gameStarted = true;
         lastSaveSyncAt = Date.now();
         startSaveAutosync();
         Module.callMain([]);
     } catch (e) {
-        console.error('Failed to start game:', e);
-        loadStatus.textContent = 'Error: ' + (e.message || e);
+        console.error('游戏启动失败:', e);
+        loadStatus.textContent = '错误: ' + (e.message || e);
         loadStatus.classList.add('has-error');
         document.getElementById('canvas-container').style.display = 'none';
         document.getElementById('upload-screen').style.display = '';
@@ -560,7 +509,6 @@ async function startGame() {
         dropZone.style.pointerEvents = '';
     }
 }
-
 function collectSaveFiles(dir) {
     const results = [];
     let entries;
@@ -574,23 +522,19 @@ function collectSaveFiles(dir) {
     }
     return results;
 }
-
 async function exportSaves() {
     const btn = document.getElementById('save-export-btn');
     btn.disabled = true;
-    btn.textContent = '⏳ Exporting…';
+    btn.textContent = '⏳ 正在导出…';
     try {
         await ensureSaveFsReady();
         await syncSaves();
-
         const files = collectSaveFiles('/saves/userdata');
-        if (files.length === 0) { alert('No save data found.'); return; }
-
+        if (files.length === 0) { alert('未找到存档数据。'); return; }
         const zip = new JSZip();
         for (const fullPath of files) {
             zip.file(fullPath.replace(/^\/saves\//, ''), Module.FS.readFile(fullPath));
         }
-
         const blob = await zip.generateAsync({ type: 'blob' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
@@ -598,59 +542,52 @@ async function exportSaves() {
         a.click();
         URL.revokeObjectURL(a.href);
     } catch (e) {
-        console.error('Export failed:', e);
-        alert('Export failed: ' + e.message);
+        console.error('导出失败:', e);
+        alert('导出失败: ' + e.message);
     } finally {
         btn.disabled = false;
-        btn.textContent = '💾 Export Saves';
+        btn.textContent = '💾 导出存档';
     }
 }
-
 async function importSaves(file, btn) {
     await ensureSaveFsReady();
     btn.disabled = true;
     const oldText = btn.textContent;
-    btn.textContent = '⏳ Importing…';
+    btn.textContent = '⏳ 正在导入…';
     try {
         const zip = await JSZip.loadAsync(file);
         const entries = Object.keys(zip.files).filter(n => !zip.files[n].dir);
-
         for (const name of entries) {
             let destPath = name;
             if (!destPath.startsWith('userdata/')) destPath = 'userdata/' + destPath;
             const fullPath = '/saves/' + destPath;
-
             const parts = fullPath.split('/');
             let dir = '';
             for (let i = 1; i < parts.length - 1; i++) {
                 dir += '/' + parts[i];
                 try { Module.FS.mkdir(dir); } catch (e) {}
             }
-
             const data = await zip.files[name].async('uint8array');
             Module.FS.writeFile(fullPath, data);
         }
-
         await syncSaves();
     } catch (e) {
-        console.error('Import failed:', e);
-        alert('Import failed: ' + e.message);
+        console.error('导入失败:', e);
+        alert('导入失败: ' + e.message);
     } finally {
         btn.disabled = false;
         btn.textContent = oldText;
     }
 }
-
 async function importSaveDirectory(files, btn) {
     await ensureSaveFsReady();
     btn.disabled = true;
     const oldText = btn.textContent;
-    btn.textContent = '⏳ Importing…';
+    btn.textContent = '⏳ 正在导入…';
     try {
         for (const file of files) {
             const relativePath = normalizeSaveImportPath(file.webkitRelativePath || file.name);
             if (!relativePath) continue;
-
             const fullPath = '/saves/userdata/' + relativePath;
             const parts = fullPath.split('/');
             let dir = '';
@@ -658,33 +595,29 @@ async function importSaveDirectory(files, btn) {
                 dir += '/' + parts[i];
                 try { Module.FS.mkdir(dir); } catch (e) {}
             }
-
             const data = new Uint8Array(await file.arrayBuffer());
             Module.FS.writeFile(fullPath, data);
         }
-
         await syncSaves();
     } catch (e) {
-        console.error('Save folder import failed:', e);
-        alert('Save folder import failed: ' + e.message);
+        console.error('存档文件夹导入失败:', e);
+        alert('存档文件夹导入失败: ' + e.message);
     } finally {
         btn.disabled = false;
         btn.textContent = oldText;
     }
 }
-
 async function clearSaves(btn) {
     await ensureSaveFsReady();
-    if (!confirm('This will permanently delete ALL save data from your browser.\nThis cannot be undone. Continue?')) return;
+    if (!confirm('此操作将永久删除浏览器中的所有存档数据，无法恢复。是否继续？')) return;
     btn.disabled = true;
     const oldText = btn.textContent;
-    btn.textContent = '⏳ Clearing…';
+    btn.textContent = '⏳ 正在清空…';
     try {
         const files = collectSaveFiles('/saves');
         for (const f of files) {
             try { Module.FS.unlink(f); } catch (e) {}
         }
-        // Remove empty directories under /saves (bottom-up)
         function rmdirsRecursive(dir) {
             let entries;
             try { entries = Module.FS.readdir(dir); } catch (e) { return; }
@@ -701,18 +634,16 @@ async function clearSaves(btn) {
             }
         }
         rmdirsRecursive('/saves');
-
         await syncSaves();
-        alert('All save data has been cleared.');
+        alert('所有存档数据已清空。');
     } catch (e) {
-        console.error('Clear failed:', e);
-        alert('Clear failed: ' + e.message);
+        console.error('清空失败:', e);
+        alert('清空失败: ' + e.message);
     } finally {
         btn.disabled = false;
         btn.textContent = oldText;
     }
 }
-
 document.getElementById('save-export-btn').addEventListener('click', exportSaves);
 uploadSaveImportBtn.addEventListener('click', () => {
     uploadSaveImportInput.click();
@@ -733,25 +664,20 @@ uploadSaveImportDirInput.addEventListener('change', async e => {
 uploadSaveClearBtn.addEventListener('click', () => {
     void clearSaves(uploadSaveClearBtn);
 });
-
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') void syncSaves();
 });
-
 window.addEventListener('pagehide', () => {
     void syncSaves();
 });
-
 window.addEventListener('beforeunload', e => {
     if (!gameStarted) return;
-
     void syncSaves();
     if (Date.now() - lastSaveSyncAt >= SAVE_CLOSE_WARNING_MS) {
         e.preventDefault();
-        e.returnValue = 'Recent save data may still be syncing. Wait a moment or export saves before leaving.';
+        e.returnValue = '近期存档可能仍在同步，请稍候或导出存档后再离开。';
     }
 });
-
 window.onGameExit = function() {
     gameStarted = false;
     if (saveSyncIntervalId !== null) {
@@ -766,7 +692,6 @@ window.onGameExit = function() {
     document.body.classList.remove('game-mode');
     document.body.classList.add('upload-mode');
     window.removeEventListener('resize', resizeCanvas);
-    // Restore drop-zone to 'ready' state so the user can re-launch.
     dropZone.classList.remove('loading');
     dropZone.style.pointerEvents = '';
     loadStatus.style.display = 'none';
@@ -774,13 +699,11 @@ window.onGameExit = function() {
     fileInput.value = '';
     resourceZipInput.value = '';
     refreshUI();
-
     if (runtimeReloadScheduled) return;
     runtimeReloadScheduled = true;
-    loadStatus.textContent = 'Resetting WebAssembly runtime…';
+    loadStatus.textContent = '正在重置 WebAssembly 运行环境…';
     loadStatus.classList.remove('has-error');
     loadStatus.style.display = 'block';
-
     window.setTimeout(() => window.location.reload(), 0);
 };
 </script>
